@@ -1,0 +1,6 @@
+bardapi
+streamlit
+opencv-python
+numpy
+easyocr
+PIL
