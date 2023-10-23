@@ -80,3 +80,6 @@ def render():
             for i in range(len(st.session_state.api_response_history)-1,-1,-1):
                 # message.write(st.session_state.query_history[i])
                 message.write(st.session_state.api_response_history[i])
+    finally:
+        if st.button("처음으로"):
+            st.session_state.page = 'get_user_info'
