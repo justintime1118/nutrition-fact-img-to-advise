@@ -1,6 +1,9 @@
 import streamlit as st
 
 def render():
+    if 'image' not in st.session_state:
+        st.session_state.image = None
+    
     if st.button('카메라 촬영', key='to_camera'):
         st.session_state.page = 'camera'
 

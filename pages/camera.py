@@ -11,5 +11,4 @@ def render():
             bytes_data = img_file_buffer.getvalue()
             img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
             st.session_state.image = img
-            
-            st.session_state.page = 'model_process'
+            st.session_state.page = 'img_to_advise'

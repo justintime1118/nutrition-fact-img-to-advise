@@ -1,16 +1,66 @@
 import streamlit as st
 import os
 
-def init_session_state():
-    if 'user_info' not in st.session_state:
-        st.session_state.user_info = dict()
-
-    if 'image' not in st.session_state:
-        st.session_state.image = None
-
-    if 'page' not in st.session_state:
-        st.session_state.page = 'get_user_info'
-
 def config():
+    # TODO (후순위) 쿠키값 자바스크립트 실행시켜서 받아오는 것 구현
     # bard api 토큰(cookie 값)
-    os.environ['_BARD_API_KEY']= 'cQgX91wJYdtvGtIAgCLjHg8TBacL7yj1SPbznpvdXwP2Z08ou__gmbOdDdMBMwGWbnPt2Q.'
+    os.environ['_BARD_API_KEY']= 'cQgX9xQMk8lwUM474tvjInT_oqqNBNJenK8urdMJ_OYbdw0IVhELeanpuCEN07TjaNs2Sg.'
+
+def calculate_calories(gender, age, height, weight, activeness):
+    calories = 0
+    if age <= 17 :
+        if gender == '남' :
+            if activeness == '활동적':
+                calories = 1.9 * (17.7 * weight + 657)
+            elif activeness == '보통':
+                calories = 1.7 * (17.7 * weight + 657)
+            elif activeness == '비활동적':
+                calories = 1.4 * (17.7 * weight + 657)
+
+        else :
+            if activeness == '활동적':
+                calories = 1.8 * (13.4 * weight + 692)
+            elif activeness == '보통':
+                calories = 1.6 * (13.4 * weight + 692)
+            elif activeness == '비활동적':
+                calories = 1.4 * (13.4 * weight + 692)
+
+    elif age <= 29 :
+        if gender == '남' :
+            if activeness == '활동적':
+                calories = 1.9 * (15.1 * weight + 692)
+            elif activeness == '보통':
+                calories = 1.7 * (15.1 * weight + 692)
+            elif activeness == '비활동적':
+                calories = 1.4 * (15.1 * weight + 692)
+
+        else :
+            if activeness == '활동적':
+                calories = 1.8 * (14.8 * weight + 487)
+            elif activeness == '보통':
+                calories = 1.6 * (14.8* weight + 487)
+            elif activeness == '비활동적':
+                calories = 1.4 * (14.8 * weight + 487)
+
+    else :
+        if gender == '남' :
+            if activeness == '활동적':
+                calories = 1.9 * (11.5 * weight + 873)
+            elif activeness == '보통':
+                calories = 1.7 * (11.5 * weight + 873)
+            elif activeness == '비활동적':
+                calories = 1.4 * (11.5 * weight + 873)
+
+        else :
+            if activeness == '활동적':
+                calories = 1.8 * (8.3 * weight + 846)
+            elif activeness == '보통':
+                calories = 1.6 * (8.3 * weight + 846)
+            elif activeness == '비활동적':
+                calories = 1.4 * (8.3 * weight + 846)
+    
+    return calories
+
+def clear_messages():
+    if "messages" in st.session_state:
+        st.session_state.messages = []

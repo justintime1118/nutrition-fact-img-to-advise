@@ -3,4 +3,7 @@ streamlit
 opencv-python
 numpy
 easyocr
-PIL
+Pillow
+gTTS
+paddlepaddle==2.5.0
+paddleocr

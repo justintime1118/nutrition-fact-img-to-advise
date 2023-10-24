@@ -11,4 +11,4 @@ def render():
             st.warning('이미지를 업로드 해주세요!')
         else:
             st.session_state.image = np.asarray(Image.open(uploaded_file))
-            st.session_state.page = 'model_process'
+            st.session_state.page = 'img_to_advise'

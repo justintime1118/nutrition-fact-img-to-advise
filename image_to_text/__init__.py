@@ -2,7 +2,6 @@ import easyocr
 import cv2
 import numpy as np
 
-
 def easy_ocr(preprocessed_img):
     reader = easyocr.Reader(['ko', 'en'], model_storage_directory='korean_g2.pth')
     result = reader.readtext(preprocessed_img)
