@@ -29,7 +29,9 @@ def render():
             # Setup model
             ocr_model = PaddleOCR(lang='korean')
             # Run the ocr method on the ocr model
+            print("model 생성 완료")
             result = ocr_model.ocr(st.session_state.image)[0]
+            print("텍스트 변환 완료")
             result_text = [result[i][1][0] for i in range(len(result))]
         except Exception as e:
             print(f"이미지 텍스트 변환 실패")

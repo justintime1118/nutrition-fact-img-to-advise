@@ -1,5 +1,7 @@
 .DS_Store
 .streamlit/
+Paddle/
+sample.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

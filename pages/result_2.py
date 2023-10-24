@@ -26,8 +26,8 @@ def render():
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
-        for question in st.session_state.prep_questions:
-            st.session_state.messages.append({"role": "assistant", "content": question[0]})
+        for _, v in st.session_state.prep_questions.items():
+            st.session_state.messages.append({"role": "assistant", "content": v[0]})
 
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
