@@ -4,7 +4,7 @@ import os
 def config():
     # TODO (후순위) 쿠키값 자바스크립트 실행시켜서 받아오는 것 구현
     # bard api 토큰(cookie 값)
-    os.environ['_BARD_API_KEY']= 'cQgX95itHQK6yuD9UwlB_2jelYCP2-7DVb0PuCzwC3Z-524dAA38mRB7ClQ6kuXerLmJfQ.'
+    os.environ['_BARD_API_KEY']= 'cQgX92ZkRyf9S59aAmghPPBzNsn_ZRe8zRnL-SdWfdl9SCsHWIkWKYjyh1i7kPOA5fOsxw.'
 
 def calculate_calories(gender, age, height, weight, activeness):
     calories = 0
@@ -64,3 +64,16 @@ def calculate_calories(gender, age, height, weight, activeness):
 def clear_messages():
     if "messages" in st.session_state:
         st.session_state.messages = []
+
+def trim_result(source:str) -> str:
+    split_texts = source.split('\n')
+    
+    start = 0
+    end = len(split_texts) - 1
+    for i, text in enumerate(split_texts):
+        if '시작' in text:
+            start = i
+        if '종료' in text:
+            end = i
+            break
+    return "\n".join(split_texts[start + 1 : end])

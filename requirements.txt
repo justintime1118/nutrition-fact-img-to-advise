@@ -5,5 +5,5 @@ numpy
 easyocr
 Pillow
 gTTS
-paddlepaddle==2.5.0
-paddleocr
+# paddlepaddle==2.5.0
+# paddleocr
