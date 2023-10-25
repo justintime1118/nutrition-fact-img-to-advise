@@ -11,7 +11,7 @@ def render():
         st.session_state.img_to_advise_done = False
     
     # 대기 영상 재생
-    file_ = open("/Users/jiyoo/ASAC_data_analysis_3rd/nutrition-fact-img-to-advise/resources/spongebob-thinking.gif", "rb")
+    file_ = open("./resources/spongebob-thinking.gif", "rb")
     contents = file_.read()
     data_url = base64.b64encode(contents).decode("utf-8")
     file_.close()
