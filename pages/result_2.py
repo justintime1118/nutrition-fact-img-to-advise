@@ -36,16 +36,33 @@ def render():
 
     # React to user input
     if user_input := st.chat_input("What is up?"):
-        # Display user message in chat message container
-        st.chat_message("user").markdown(user_input)
-        # Add user message to chat history
-        st.session_state.messages.append({"role": "user", "content": user_input})
-
-        if len(user_input) == 1 and re.match('[0-9]', user_input):
+        # 입력값이 0~9이면 사전질문으로 대체해서 화면 표시
+        if len(user_input) == 1 and re.match('[0-9]', user_input): 
+            # Display user message in chat message container
+            st.chat_message("user").markdown(st.session_state.prep_questions[int(user_input)][0])
+            # Add user message to chat history
+            st.session_state.messages.append({"role": "user", "content": st.session_state.prep_questions[int(user_input)][0]})
             response = st.session_state.prep_questions[int(user_input)][1]
         else:
+            # Display user message in chat message container
+            st.chat_message("user").markdown(user_input)
+            # Add user message to chat history
+            st.session_state.messages.append({"role": "user", "content": user_input})
             try:
                 print("bard api 호출 시도")
+                user_input =\
+                f'''
+                다음은 나의 성별, 키, 몸무게, 일일 소모 칼로리야.
+
+                성별 : {st.session_state.user_info['gender']},
+                키 : {st.session_state.user_info['height']},
+                몸무게 : {st.session_state.user_info['weight']},
+                일일 소모 칼로리 : {st.session_state.user_info['calories']}\n
+                
+                이상 나에 대한 정보를 인지한 상태에서 다음 질문에 답변하되
+                건강, 영양, 식품 등에 대한 질문이 아니라면 위 정보는 무시하고 그냥 답변해줘.
+                또한 질문에 대한 답변만을 표시하고 왜 그런식으로 답변을 하는지에 대한 정보는 표시하지 말아줘\n
+                ''' + user_input
                 response = Bard().get_answer(user_input)['content']
             except Exception as e:
                 print("bard api 호출 실패")
