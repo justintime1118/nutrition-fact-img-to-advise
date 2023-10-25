@@ -36,8 +36,7 @@ def render():
 
     # React to user input
     if user_input := st.chat_input("What is up?"):
-        # 입력값이 0~9이면 사전질문으로 대체해서 화면 표시
-        if len(user_input) == 1 and re.match('[0-9]', user_input): 
+        if user_input in st.session_state.prep_questions: 
             # Display user message in chat message container
             st.chat_message("user").markdown(st.session_state.prep_questions[int(user_input)][0])
             # Add user message to chat history
