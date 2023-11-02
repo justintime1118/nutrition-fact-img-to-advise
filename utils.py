@@ -2,9 +2,8 @@ import streamlit as st
 import os
 
 def config():
-    # TODO (후순위) 쿠키값 자바스크립트 실행시켜서 받아오는 것 구현
     # bard api 토큰(cookie 값)
-    os.environ['_BARD_API_KEY']= 'cQgX98fBgU2h5o-OfVamX1vebjsEFrkWlb1v3gmqcIYn2FAw0VYc0-8nK-0f_VDL1KAb0A.'
+    os.environ['_BARD_API_KEY']= 'cggX92-Jnb6QiR4TDj1ndMUKQfSwbEEHxytcnQDM2lnzLtxdQOefbVnwa_lymPO5rOVYqA.'
 
 def calculate_calories(gender, age, height, weight, activeness):
     calories = 0
